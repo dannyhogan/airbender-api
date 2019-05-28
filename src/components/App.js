@@ -1,5 +1,6 @@
 import Component from './Component.js';
 import Header from './Header.js';
+import AirbenderList from './AirbenderList.js';
 
 class App extends Component {
 
@@ -9,7 +10,9 @@ class App extends Component {
 
         const header = new Header();
         app.insertBefore(header.render(), main);
-        
+
+        const airbenderList = new AirbenderList();
+        main.appendChild(airbenderList.render());
 
         return app;
     }
