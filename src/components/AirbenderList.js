@@ -1,21 +1,22 @@
 import Component from './Component.js';
+import AirbenderItem from './AirbenderItem.js';
 
 class AirbenderList extends Component {
+
+    render() {
+        const list = this.renderDOM();
+
+        const airbenders = this.props.airbenders;
+        airbenders.forEach(airbender => {
+            const item = new AirbenderItem({ airbender });
+            list.appendChild(item.render());
+        });
+
+        return list;
+    }
     renderTemplate() {
         return /*html*/`
             <ul id="airbender-list">
-                <li>
-                    <h1>46th Earth King</h1>
-                    <img src="https://vignette.wikia.nocookie.net/avatar/images/5/51/46th_Earth_King.png/revision/latest?cb=20130627160441">
-                </li>
-                <li>
-                    <h1>46th Earth King</h1>
-                    <img src="https://vignette.wikia.nocookie.net/avatar/images/5/51/46th_Earth_King.png/revision/latest?cb=20130627160441">
-                </li>
-                <li>
-                    <h1>46th Earth King</h1>
-                    <img src="https://vignette.wikia.nocookie.net/avatar/images/5/51/46th_Earth_King.png/revision/latest?cb=20130627160441">
-                </li>
             </ul>
         `;
     }
