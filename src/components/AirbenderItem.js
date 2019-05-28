@@ -5,7 +5,7 @@ class AirbenderItem extends Component {
         const airbender = this.props.airbender;
 
         return /*html*/`
-            <li>
+            <li class="airbender-item">
                 <h1>${airbender.name}</h1>
                 <img src="${airbender.photoUrl}">
             </li>
