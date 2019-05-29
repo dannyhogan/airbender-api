@@ -8,6 +8,10 @@ class AirbenderItem extends Component {
             <li class="airbender-item">
                 <h1>${airbender.name}</h1>
                 <img src="${airbender.photoUrl}">
+                <section>
+                    <a id="allies" href="#allies=${airbender.name}">Allies</a>
+                    <a id="enemies" href="#enemies=${airbender.name}">Enemies</a>
+                </section>
             </li>
         `;
     }
