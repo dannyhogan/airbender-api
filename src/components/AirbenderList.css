@@ -1,4 +1,6 @@
 .airbender-list {
     display: flex;
     flex-wrap: wrap;
+    width: 95vw;
+    margin-left: 75px;
 }
