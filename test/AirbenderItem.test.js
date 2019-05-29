@@ -16,6 +16,10 @@ test('Creates correct dom for airbender item', assert => {
     <li class="airbender-item">
         <h1>46th Earth King</h1>
         <img src="https://vignette.wikia.nocookie.net/avatar/images/5/51/46th_Earth_King.png/revision/latest?cb=20130627160441">
+        <section>
+            <a id="allies" href="#allies=${airbender.name}">Allies</a>
+            <a id="enemies" href="#enemies=${airbender.name}">Enemies</a>
+        </section>
     </li>`
     );
 });
