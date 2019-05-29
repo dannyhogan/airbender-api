@@ -10,23 +10,47 @@ class App extends Component {
         const app = this.renderDOM();
         const main = app.querySelector('main');
 
-        const header = new Header();
+        const header = new Header({ search: '', searchPrefix: '' });
         app.insertBefore(header.render(), main);
 
         const airbenderList = new AirbenderList({ airbenders: [] });
         main.appendChild(airbenderList.render());
 
-        const loading = new Loading({ loading: true });
+        const loading = new Loading({ loading: false });
         main.appendChild(loading.render());
 
-        airbenderApi.getAirbenders()
-            .then(airbenders => {
-                airbenderList.update({ airbenders });
-            })
+        function getAirbenders() {
+            loading.update({ loading: true });
 
-            .finally(() => {
-                loading.update({ loading: false });
-            });
+            const params = window.location.hash.slice(1);
+            const searchParams = new URLSearchParams(params);
+            
+            let searchPrefix = '';
+
+            if(searchParams.get('allies')) {
+                searchPrefix = 'allies';
+            } else if(searchParams.get('enemies')) {
+                searchPrefix = 'enemies';
+            }
+
+            const search = searchParams.get(searchPrefix);
+            header.update({ search, searchPrefix });
+
+            airbenderApi.getAirbenders(search, searchPrefix)
+                .then(airbenders => {
+                    airbenderList.update({ airbenders });
+                })
+
+                .finally(() => {
+                    loading.update({ loading: false });
+                });
+        }
+
+        getAirbenders();
+
+        window.addEventListener('hashchange', () => {
+            getAirbenders();
+        });
 
         return app;
     }
