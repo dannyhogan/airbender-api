@@ -15,9 +15,9 @@ class Header extends Component {
 
         return /*html*/`
             <header>
-                <h1>The Last Airbender</h1>
-                <h3>${character}'s ${type}</h3>
+                <h1 id="header">The Last Airbender</h1>
                 <a href="index.html"><button>Show All Characters</button></a>
+                <h3>${character}'s ${type}</h3>
             </header>
         `;
     }
