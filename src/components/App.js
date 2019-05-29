@@ -1,6 +1,7 @@
 import Component from './Component.js';
 import Header from './Header.js';
 import AirbenderList from './AirbenderList.js';
+import Loading from './Loading.js';
 import airbenderApi from '../services/airbender-api.js';
 
 class App extends Component {
@@ -15,10 +16,17 @@ class App extends Component {
         const airbenderList = new AirbenderList({ airbenders: [] });
         main.appendChild(airbenderList.render());
 
+        const loading = new Loading({ loading: true });
+        main.appendChild(loading.render());
+
         airbenderApi.getAirbenders()
             .then(airbenders => {
                 airbenderList.update({ airbenders });
-            });        
+            })
+
+            .finally(() => {
+                loading.update({ loading: false });
+            });
 
         return app;
     }
