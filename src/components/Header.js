@@ -17,6 +17,7 @@ class Header extends Component {
             <header>
                 <h1>The Last Airbender</h1>
                 <h3>${character}'s ${type}</h3>
+                <a href="index.html"><button>Show All Characters</button></a>
             </header>
         `;
     }
