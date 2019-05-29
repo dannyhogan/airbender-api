@@ -19,14 +19,35 @@ class App extends Component {
         const loading = new Loading({ loading: true });
         main.appendChild(loading.render());
 
-        airbenderApi.getAirbenders()
-            .then(airbenders => {
-                airbenderList.update({ airbenders });
-            })
+        function getAirbenders() {
+            const params = window.location.hash.slice(1);
+            const searchParams = new URLSearchParams(params);
 
-            .finally(() => {
-                loading.update({ loading: false });
-            });
+            let searchPrefix = '';
+
+            if(searchParams.get('allies')) {
+                searchPrefix = 'allies';
+            } else if(searchParams.get('enemies')) {
+                searchPrefix = 'enemies';
+            }
+
+            const search = searchParams.get(searchPrefix);
+
+            airbenderApi.getAirbenders(search, searchPrefix)
+                .then(airbenders => {
+                    airbenderList.update({ airbenders });
+                })
+
+                .finally(() => {
+                    loading.update({ loading: false });
+                });
+        }
+
+        getAirbenders();
+
+        window.addEventListener('hashchange', () => {
+            getAirbenders();
+        });
 
         return app;
     }
