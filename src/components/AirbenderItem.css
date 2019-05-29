@@ -6,6 +6,10 @@
     border: 2px solid white;
     border-radius: 10px;
     background-color: rgb(193, 218, 226);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .airbender-item img {
