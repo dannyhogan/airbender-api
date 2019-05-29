@@ -1,0 +1,15 @@
+.airbender-item {
+    list-style: none;
+    text-align: center;
+    margin: 0 10px 10px 0;
+    width: 250px;
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: rgb(193, 218, 226);
+}
+
+.airbender-item img {
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+}
