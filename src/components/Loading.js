@@ -3,8 +3,8 @@ import Component from './Component.js';
 class Loading extends Component {
     renderTemplate() {
         return /*html*/`
-            <div id="loading">
-                <img src="../../assets/loading.gif">
+            <div>
+                <img id="loading" src="../../assets/loading.gif">
             </div>
         `;
     }
