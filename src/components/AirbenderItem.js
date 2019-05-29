@@ -1,6 +1,7 @@
 import Component from './Component.js';
 
 class AirbenderItem extends Component {
+
     renderTemplate() {
         const airbender = this.props.airbender;
 
@@ -9,8 +10,8 @@ class AirbenderItem extends Component {
                 <h1>${airbender.name}</h1>
                 <img src="${airbender.photoUrl}">
                 <section>
-                    <a id="allies" href="#allies=${airbender.name}">Allies</a>
-                    <a id="enemies" href="#enemies=${airbender.name}">Enemies</a>
+                    <a href="#allies=${airbender.name}">Allies</a>
+                    <a href="#enemies=${airbender.name}">Enemies</a>
                 </section>
             </li>
         `;
